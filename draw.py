@@ -14,7 +14,6 @@ def draw_line( x0, y0, x1, y1, screen, color ):
     b = -1 * dx
     x = x0
     y = y0
-    print(dy)
     if (dy >= 0 and dx > dy): # 0 <= m < 1
         d = 2 * a + b
         while x < x1:
