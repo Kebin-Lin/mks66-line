@@ -12,7 +12,7 @@ class Turtle:
         else:
             self.color = color
         if (ang == None):
-            self.ang = math.random() * 2 * math.pi
+            self.ang = random.random() * 2 * math.pi
         else:
             self.ang = ang
         self.penDown = False
@@ -50,8 +50,8 @@ numTurtles = 64
 allTurtles = []
 
 for i in range(numTurtles):
-    inAng = i / numTurtles * 2 * math.pi
-    hsvCol = (i / numTurtles, 1, 1)
+    inAng = float(i) / numTurtles * 2 * math.pi
+    hsvCol = (float(i) / numTurtles, 1, 1)
     rgbCol = colorsys.hsv_to_rgb(hsvCol[0],hsvCol[1],hsvCol[2])
     rgbCol = [int(rgbCol[0] * 255), int(rgbCol[1] * 255), int(rgbCol[2] * 255)]
     newTurt = Turtle(ang = inAng, y = 250, x = 250, color = rgbCol)
@@ -63,7 +63,7 @@ sides = 360
 for i in range(sides):
     for j in allTurtles:
         j.fd(2 * radius * math.sin(math.pi / sides))
-        j.rt(1 / sides * 2 * math.pi)
+        j.rt(1. / sides * 2 * math.pi)
 
 numRings = 8
 frequency = 8
@@ -78,12 +78,12 @@ for outerTurt in outerTurtles:
     dist = math.pow(math.pow(outerTurt.x - 250, 2) + math.pow(outerTurt.y - 250, 2), .5)
     start = (outerTurt.x,outerTurt.y)
     for i in range(sides):
-        hsvCol = (i / sides * frequency % 1, 1, 1)
+        hsvCol = (float(i) / sides * frequency % 1, 1, 1)
         rgbCol = colorsys.hsv_to_rgb(hsvCol[0],hsvCol[1],hsvCol[2])
         rgbCol = [int(rgbCol[0] * 255), int(rgbCol[1] * 255), int(rgbCol[2] * 255)]
         outerTurt.color = rgbCol
         outerTurt.fd(2 * dist * math.sin(math.pi / sides))
-        outerTurt.rt(1 / sides * 2 * math.pi)
+        outerTurt.rt(1. / sides * 2 * math.pi)
     outerTurt.goto(start[0],start[1])
 
 display(screen)
